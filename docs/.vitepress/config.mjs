@@ -3,6 +3,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "⚡ VelociForge Engine",
   description: "Next-Generation Virtualized Package Engine & Sub-Millisecond CI Restorer for Node.js",
+  base: '/velociforge/',
   cleanUrls: true,
   themeConfig: {
     logo: '/logo.png',
