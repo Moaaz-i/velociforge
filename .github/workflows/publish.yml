@@ -8,6 +8,10 @@ on:
       - 'v*'
   workflow_dispatch:
 
+concurrency:
+  group: npm-publish-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   publish-npm:
     name: Publish to NPM
@@ -58,8 +62,14 @@ jobs:
               echo "::error::NPM_TOKEN secret is missing in GitHub repository settings! Please add NPM_TOKEN to Repository Secrets."
               exit 1
             fi
-            echo "Publishing velociforge@$LOCAL_VER to npm..."
-            npm publish --access public --provenance
+            # Re-check live npm version right before publishing to avoid race conditions
+            LIVE_CHECK=$(npm view velociforge@$LOCAL_VER version 2>/dev/null || true)
+            if [ "$LIVE_CHECK" = "$LOCAL_VER" ]; then
+              echo "::notice::Version velociforge@$LOCAL_VER was just published by a parallel trigger. Skipping duplicate publish."
+            else
+              echo "Publishing velociforge@$LOCAL_VER to npm..."
+              npm publish --access public --provenance
+            fi
           else
             echo "::notice::package.json version ($LOCAL_VER) did not change in this push. Skipping publish."
           fi
