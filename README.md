@@ -4,7 +4,7 @@
 
 [![npm version](https://img.shields.io/npm/v/velociforge.svg?style=for-the-badge&color=0284c7)](https://www.npmjs.com/package/velociforge)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge&color=7c3aed)](https://opensource.org/licenses/MIT)
-[![Speed](https://img.shields.io/badge/Startup-0.70ms-059669?style=for-the-badge)](https://github.com/moaaz/velociforge)
+[![Speed](https://img.shields.io/badge/Startup-0.70ms-059669?style=for-the-badge)](https://github.com/Moaaz-i/velociforge)
 
 **VelociForge** (`vforge`) replaces slow `node_modules` disk I/O bottlenecks and multi-minute `npm ci` network installations by bundling dependency trees into a single compressed, cryptographic manifest (`.vforge`).
 

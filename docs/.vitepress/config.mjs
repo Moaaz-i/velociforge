@@ -12,7 +12,7 @@ export default defineConfig({
       { text: 'Guide', link: '/guide/getting-started' },
       { text: 'CLI Reference', link: '/cli/reference' },
       { text: 'Benchmarks', link: '/guide/benchmarks' },
-      { text: 'GitHub', link: 'https://github.com/moaaz/velociforge' }
+      { text: 'GitHub', link: 'https://github.com/Moaaz-i/velociforge' }
     ],
     sidebar: [
       {
