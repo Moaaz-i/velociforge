@@ -1,6 +1,6 @@
 {
   "name": "velociforge",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Next-Generation Virtualized Package Engine & Sub-Millisecond CI Restorer for Node.js",
   "main": "src/cli.js",
   "bin": {
@@ -32,7 +32,12 @@
     "cache",
     "bundler",
     "velociforge",
-    "vforge"
+    "vforge",
+    "p2p",
+    "lan-cache",
+    "security-guard",
+    "diff",
+    "edge-ci"
   ],
   "author": "Moaaz",
   "license": "MIT",

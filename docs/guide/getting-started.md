@@ -30,8 +30,7 @@ Verify the installation:
 
 ```bash
 vforge --version
-# or
-velociforge --version
+# VelociForge Engine v1.1.1 (vforge)
 ```
 
 ---
@@ -54,7 +53,7 @@ Add VelociForge as a development dependency in your `package.json`:
 npm install -D velociforge
 ```
 
-Add npm scripts to `package.json`:
+Then add scripts to `package.json`:
 
 ```json
 {
@@ -70,30 +69,45 @@ Add npm scripts to `package.json`:
 
 ## 🏁 Basic Workflow
 
-### 1. Pack Project Dependencies
+### Step 1 — Pack Dependencies
 Convert `node_modules` into a single compressed `.vforge` archive:
 
 ```bash
 vforge pack
 ```
 
-### 2. Run Server Ephemerally (Sub-Millisecond Startup)
-Unpack dependencies in memory, run script, and clean disk on exit:
+### Step 2 — Ephemeral Run (Sub-Millisecond Startup)
+Mount zero-copy symlink, run your server, and auto-clean disk on exit:
 
 ```bash
 vforge run npm start
 ```
 
-### 3. Run Self-Diagnostic Doctor
-Check system compatibility and RAM-disk mounts:
+### Step 3 — CI Restoration (Zero-Delay)
+Restore dependencies in CI from `.vforge` archive:
 
 ```bash
-vforge doctor
+vforge ci
 ```
 
-### 4. Inspect Archive Contents
-List all top-level installed libraries inside `.vforge` in 0.25ms:
+### Step 4 — Inspect Archive Contents
+List all installed packages inside `.vforge` in **0.25ms**:
 
 ```bash
 vforge list
+```
+
+### Step 5 — Security & Guard Check
+Scan for CVE vulnerabilities and malicious lifecycle scripts:
+
+```bash
+vforge security   # CVE & license scan
+vforge guard      # Zero-Trust malicious script detector
+```
+
+### Step 6 — Self-Diagnostic Doctor
+Check system compatibility, cache location, and symlink support:
+
+```bash
+vforge doctor
 ```

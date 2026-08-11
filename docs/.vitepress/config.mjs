@@ -7,7 +7,7 @@ export default defineConfig({
   cleanUrls: true,
   themeConfig: {
     logo: '/logo.png',
-    siteTitle: '⚡ VelociForge Engine',
+    siteTitle: '⚡ VelociForge Engine v1.1.1',
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Guide', link: '/guide/getting-started' },
@@ -34,6 +34,15 @@ export default defineConfig({
         ]
       },
       {
+        text: '✨ New in v1.1.1',
+        items: [
+          { text: 'P2P LAN Cache (vforge p2p)', link: '/guide/p2p-lan-cache' },
+          { text: 'Zero-Trust Script Guard (vforge guard)', link: '/guide/security-audit' },
+          { text: 'Archive Diff Visualizer (vforge diff)', link: '/guide/diff-visualizer' },
+          { text: 'Edge CI Generator (vforge edge)', link: '/guide/edge-ci' }
+        ]
+      },
+      {
         text: '📖 Reference',
         items: [
           { text: 'Complete CLI Reference', link: '/cli/reference' }
@@ -45,7 +54,7 @@ export default defineConfig({
     },
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2026 VelociForge Engine (vforge)'
+      copyright: 'Copyright © 2026 VelociForge Engine (vforge) v1.1.1'
     }
   }
 })

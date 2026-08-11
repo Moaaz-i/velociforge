@@ -1,4 +1,4 @@
-# ⚡ VelociForge Engine Documentation
+# ⚡ VelociForge Engine — v1.1.1
 
 > **Next-Generation Virtualized Package Engine & Sub-Millisecond CI Restorer for Node.js**
 
@@ -18,23 +18,26 @@ Or run directly without installing:
 npx velociforge run npm start
 ```
 
-Both binary commands `vforge` and `velociforge` are made available globally on your terminal!
+Both binary commands `vforge` and `velociforge` are available globally on your terminal!
 
 ---
 
-## 🌟 Key Highlights
+## 🌟 Key Highlights (v1.1.1)
 
 - **⚡ Sub-Millisecond Ephemeral Startup (`vforge run`)**: Mounts zero-copy virtual symlinks and starts your server in **0.70ms**.
-- **📦 Multi-Algorithm Streaming Archiver**: Supports `gzip`, `brotli`, `zstd`, and uncompressed streaming tar payloads.
+- **📦 Multi-Algorithm Streaming Archiver**: Supports `gzip`, `brotli`, and uncompressed streaming tar payloads.
 - **🔐 AES-256 Payload Encryption**: Encrypt private package archives with custom key pairs.
-- **🛡️ Integrated Security & License Auditor**: Scans for CVE vulnerabilities and copyleft licenses (GPL/AGPL).
-- **📋 CycloneDX SBOM Generator**: Automatically outputs Software Bill of Materials in compliant JSON format.
-- **🌐 Interactive Web Analytics Dashboard (`vforge ui`)**: Embedded real-time dashboard for visual inspection.
+- **🛡️ Zero-Trust Script Guard (`vforge guard`)**: Detects malicious shell patterns inside lifecycle scripts.
+- **📋 Instant Archive Inspector (`vforge list`)**: Lists all installed packages in **0.25ms** directly from the archive.
+- **🔍 Deep Diff Visualizer (`vforge diff`)**: Recursively scans all manifests and computes precise package & size deltas.
+- **🌐 VelociRadix P2P LAN Cache (`vforge p2p`)**: Share `.vforge` archives over local Wi-Fi with zero internet usage.
+- **☁️ Edge CI Generator (`vforge edge`)**: Generates GitHub Actions workflows with sub-millisecond cache restoration.
+- **🌐 Interactive Web Analytics Dashboard (`vforge ui`)**: Embedded real-time dashboard (VelociRadix Powered).
 - **🏢 Monorepo Aware**: Native resolution for `pnpm`, `Turborepo`, `Nx`, and `Lerna` workspace topologies.
 
 ---
 
-## ⚡ Speed Benchmarks Comparison
+## ⚡ Speed Benchmarks
 
 | Operation Profile | Standard `npm` / Trad CI | VelociForge Performance | Speedup Factor |
 | :--- | :--- | :--- | :--- |
