@@ -28,6 +28,10 @@ ${colors.whiteBold}COMMANDS:${colors.reset}
   ${colors.cyan}ci${colors.reset} | ${colors.cyan}restore${colors.reset} ⚡ Ultra-fast extraction (0ms zero-delay if lockfile matches)
   ${colors.cyan}run${colors.reset} | ${colors.cyan}boot${colors.reset}    🔄 Ephemeral run: unpacks node_modules, runs server, auto-cleans on exit!
   ${colors.cyan}list${colors.reset} | ${colors.cyan}ls${colors.reset}      📋 Reads .vforge archive and lists all installed library names
+  ${colors.cyan}p2p${colors.reset} | ${colors.cyan}lan${colors.reset}     🌐 Zero-bandwidth LAN P2P cache node (share archives over Wi-Fi)
+  ${colors.cyan}guard${colors.reset}       🛡 Zero-Trust malicious script inspector & sandbox analyzer
+  ${colors.cyan}diff${colors.reset} | ${colors.cyan}delta${colors.reset}   🔍 Compares two archives/snapshots and shows size & version delta
+  ${colors.cyan}edge${colors.reset} | ${colors.cyan}cloud${colors.reset}   ☁️ Generates sub-millisecond GitHub Actions & Edge CI workflows
   ${colors.cyan}docs${colors.reset}       📖 Launches interactive VitePress documentation engine
   ${colors.cyan}shrink${colors.reset}     🧹 Tree-shakes node_modules (strips docs/maps to save 30% space)
   ${colors.cyan}doctor${colors.reset}     🩺 Self-diagnostic health checker & environment auditor
@@ -143,6 +147,33 @@ ${colors.whiteBold}OPTIONS:${colors.reset}
             Logger.banner();
             const ListerEngine = require('./core/lister');
             await ListerEngine.listPackages();
+
+        } else if (command === 'p2p' || command === 'lan') {
+            Logger.banner();
+            const P2PEngine = require('./core/p2p');
+            const subCmd = args[1];
+            if (subCmd === 'pull') {
+                const peerUrl = args[2] || 'http://localhost:3457';
+                await P2PEngine.pullFromPeer(peerUrl);
+            } else {
+                const port = args[1] && !isNaN(args[1]) ? parseInt(args[1], 10) : 3457;
+                await P2PEngine.startP2PServer(port);
+            }
+
+        } else if (command === 'guard' || command === 'sandbox') {
+            Logger.banner();
+            const GuardEngine = require('./core/guard');
+            GuardEngine.inspect();
+
+        } else if (command === 'diff' || command === 'delta') {
+            Logger.banner();
+            const DiffEngine = require('./core/diff');
+            DiffEngine.compareManifests(args[1], args[2]);
+
+        } else if (command === 'edge' || command === 'cloud') {
+            Logger.banner();
+            const EdgeEngine = require('./core/edge');
+            EdgeEngine.generateGitHubActions();
 
         } else if (command === 'docs') {
             Logger.banner();
