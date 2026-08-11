@@ -42,8 +42,8 @@
   },
   "homepage": "https://github.com/Moaaz-i/velociforge#readme",
   "dependencies": {
-    "tar": "^6.2.0",
-    "velociradix": "^1.0.0"
+    "tar": "^7.4.3",
+    "velociradix": "^6.2.1"
   },
   "devDependencies": {
     "vitepress": "^1.6.4"
