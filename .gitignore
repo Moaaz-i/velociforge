@@ -10,5 +10,6 @@ node_modules
 .aether.tmp*
 .aether-unpack-tmp*
 dist
-.vitepress/cache
-.vitepress/dist
+docs/.vitepress/cache
+docs/.vitepress/dist
+
