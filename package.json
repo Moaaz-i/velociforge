@@ -1,6 +1,6 @@
 {
   "name": "velociforge",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Next-Generation Virtualized Package Engine & Sub-Millisecond CI Restorer for Node.js",
   "main": "src/cli.js",
   "bin": {
