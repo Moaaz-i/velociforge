@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -32,15 +34,30 @@ jobs:
       - name: Run Tests
         run: npm test
 
-      - name: Publish to NPM
+      - name: Check Version & Publish to NPM
         run: |
           LOCAL_VER=$(node -p "require('./package.json').version")
           REMOTE_VER=$(npm view velociforge@$LOCAL_VER version 2>/dev/null || true)
-          if [ "$REMOTE_VER" = "$LOCAL_VER" ]; then
-            echo "::notice::Version velociforge@$LOCAL_VER is already published on npm. Skipping publish."
+          
+          # Detect if version was changed in package.json
+          VERSION_CHANGED=false
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [[ "${{ github.ref }}" == refs/tags/* ]]; then
+            VERSION_CHANGED=true
           else
+            OLD_VER=$(git show HEAD~1:package.json 2>/dev/null | node -p "JSON.parse(require('fs').readFileSync(0, 'utf-8')).version" 2>/dev/null || true)
+            if [ "$OLD_VER" != "$LOCAL_VER" ]; then
+              VERSION_CHANGED=true
+              echo "Detected version change in package.json: $OLD_VER ➔ $LOCAL_VER"
+            fi
+          fi
+
+          if [ "$REMOTE_VER" = "$LOCAL_VER" ]; then
+            echo "::notice::Version velociforge@$LOCAL_VER is already published on npm. Skipping."
+          elif [ "$VERSION_CHANGED" = "true" ]; then
             echo "Publishing velociforge@$LOCAL_VER to npm..."
             npm publish --access public --provenance
+          else
+            echo "::notice::package.json version ($LOCAL_VER) did not change in this push. Skipping publish."
           fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
