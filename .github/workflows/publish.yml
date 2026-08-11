@@ -54,6 +54,10 @@ jobs:
           if [ "$REMOTE_VER" = "$LOCAL_VER" ]; then
             echo "::notice::Version velociforge@$LOCAL_VER is already published on npm. Skipping."
           elif [ "$VERSION_CHANGED" = "true" ]; then
+            if [ -z "$NODE_AUTH_TOKEN" ]; then
+              echo "::error::NPM_TOKEN secret is missing in GitHub repository settings! Please add NPM_TOKEN to Repository Secrets."
+              exit 1
+            fi
             echo "Publishing velociforge@$LOCAL_VER to npm..."
             npm publish --access public --provenance
           else
