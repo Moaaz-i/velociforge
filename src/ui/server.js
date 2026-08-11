@@ -2,14 +2,14 @@
  * VelociForge Web UI Dashboard Server
  */
 
-const { createApp } = require('velociradix');
 const path = require('path');
 const fs = require('fs');
 const SecurityEngine = require('../core/security');
 const { Logger } = require('../utils/logger');
 
 class UIServer {
-    static start(port = 3456, projectDir = process.cwd()) {
+    static async start(port = 3456, projectDir = process.cwd()) {
+        const { createApp } = await import('velociradix');
         const app = createApp();
 
         app.serveStatic(path.join(__dirname, 'public'));

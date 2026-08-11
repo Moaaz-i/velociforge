@@ -9,7 +9,6 @@ const UnpackerEngine = require('./core/unpacker');
 const ManifestEngine = require('./core/manifest');
 const SecurityEngine = require('./core/security');
 const BenchmarkEngine = require('./core/bench');
-const UIServer = require('./ui/server');
 const MonorepoEngine = require('./core/monorepo');
 const RemoteEngine = require('./core/remote');
 const { Logger, colors } = require('./utils/logger');
@@ -124,7 +123,8 @@ ${colors.whiteBold}OPTIONS:${colors.reset}
             Logger.banner();
             const portIdx = args.indexOf('--port');
             const port = portIdx !== -1 ? parseInt(args[portIdx + 1], 10) : 3456;
-            UIServer.start(port);
+            const UIServer = require('./ui/server');
+            await UIServer.start(port);
 
         } else if (command === 'monorepo') {
             Logger.banner();
