@@ -53,15 +53,22 @@ ${colors.gray} High-Speed Virtualized Package Engine & Ultra-Fast CI Restorer v1
     }
 
     static table(headers, rows) {
-        console.log('\n' + colors.gray + '┌' + '─'.repeat(70) + '┐' + colors.reset);
-        const headerStr = headers.map((h, i) => h.padEnd(i === 0 ? 30 : 18)).join('');
-        console.log(`${colors.gray}│${colors.reset} ${colors.whiteBold}${headerStr}${colors.reset}`);
-        console.log(colors.gray + '├' + '─'.repeat(70) + '┤' + colors.reset);
+        const colWidths = headers.map((h, i) => {
+            const maxRowLen = rows.reduce((max, r) => Math.max(max, String(r[i] || '').length), 0);
+            return Math.max(h.length, maxRowLen) + 3;
+        });
+
+        const totalWidth = colWidths.reduce((a, b) => a + b, 0) + 1;
+        
+        console.log('\n' + colors.gray + '┌' + '─'.repeat(totalWidth) + '┐' + colors.reset);
+        const headerStr = headers.map((h, i) => ' ' + h.padEnd(colWidths[i] - 1)).join('');
+        console.log(`${colors.gray}│${colors.reset}${colors.whiteBold}${headerStr}${colors.reset}${colors.gray}│${colors.reset}`);
+        console.log(colors.gray + '├' + '─'.repeat(totalWidth) + '┤' + colors.reset);
         for (const row of rows) {
-            const rowStr = row.map((r, i) => String(r).padEnd(i === 0 ? 30 : 18)).join('');
-            console.log(`${colors.gray}│${colors.reset} ${colors.cyan}${rowStr}${colors.reset}`);
+            const rowStr = row.map((r, i) => ' ' + String(r || '').padEnd(colWidths[i] - 1)).join('');
+            console.log(`${colors.gray}│${colors.reset}${colors.cyan}${rowStr}${colors.reset}${colors.gray}│${colors.reset}`);
         }
-        console.log(colors.gray + '└' + '─'.repeat(70) + '┘' + colors.reset + '\n');
+        console.log(colors.gray + '└' + '─'.repeat(totalWidth) + '┘' + colors.reset + '\n');
     }
 
     static timerStart(label) {
