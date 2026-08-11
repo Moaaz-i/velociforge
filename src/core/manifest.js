@@ -63,7 +63,7 @@ class ManifestEngine {
             version: 1,
             metadata: {
                 timestamp: new Date().toISOString(),
-                tools: [{ vendor: "VelociForge", name: "vforge", version: "1.0.0" }]
+                tools: [{ vendor: "VelociForge", name: "vforge", version: "1.1.0" }]
             },
             components: Object.entries({ ...dependencies, ...devDependencies }).map(([name, version]) => ({
                 type: "library",

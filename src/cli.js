@@ -56,7 +56,7 @@ ${colors.whiteBold}OPTIONS:${colors.reset}
     }
 
     if (command === 'version' || command === '-v' || command === '--version') {
-        console.log('VelociForge Engine v1.0.0 (vforge)');
+        console.log('VelociForge Engine v1.1.0 (vforge)');
         return;
     }
 

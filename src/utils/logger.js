@@ -28,7 +28,7 @@ ${colors.cyan}${colors.bright}  __     _____ _     ___   ____ ___ _____ ___  ___
    \\ \\ |  _|  | |  | | | | |    | || |_ | | | | |_) | |  _|  _|  
    / / | |___ | |__| |_| | |___ | ||  _|| |_| |  _ <| |_| | |___ 
   /_/  |_____|_____|\\___/ \\____|___|_|   \\___/|_| \\_\\\\____|_____|${colors.reset}
-${colors.gray} High-Speed Virtualized Package Engine & Ultra-Fast CI Restorer v1.0.0${colors.reset}
+${colors.gray} High-Speed Virtualized Package Engine & Ultra-Fast CI Restorer v1.1.0${colors.reset}
         `);
     }
 
