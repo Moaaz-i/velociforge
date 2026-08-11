@@ -10,7 +10,9 @@
   "files": [
     "bin",
     "src",
-    "docs",
+    "docs/*.md",
+    "docs/guide/*.md",
+    "docs/cli/*.md",
     "README.md",
     "LICENSE"
   ],
