@@ -182,7 +182,7 @@ ${colors.whiteBold}OPTIONS:${colors.reset}
         } else if (command === 'advisor' || command === 'optimize') {
             Logger.banner();
             const AdvisorEngine = require('./core/advisor');
-            AdvisorEngine.analyze();
+            await AdvisorEngine.analyze();
 
         } else if (command === 'export') {
             Logger.banner();
