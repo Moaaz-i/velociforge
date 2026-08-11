@@ -34,7 +34,11 @@
   ],
   "author": "Moaaz",
   "license": "MIT",
-  "homepage": "https://github.com/moaaz/velociforge#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Moaaz-i/velociforge.git"
+  },
+  "homepage": "https://github.com/Moaaz-i/velociforge#readme",
   "dependencies": {
     "express": "^4.19.2",
     "tar": "^6.2.0"
