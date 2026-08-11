@@ -4,9 +4,12 @@
 
 [![npm version](https://img.shields.io/npm/v/velociforge.svg?style=for-the-badge&color=0284c7)](https://www.npmjs.com/package/velociforge)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge&color=7c3aed)](https://opensource.org/licenses/MIT)
+[![Documentation](https://img.shields.io/badge/Docs-VitePress-2563eb.svg?style=for-the-badge&logo=vitepress)](https://Moaaz-i.github.io/velociforge/)
 [![Speed](https://img.shields.io/badge/Startup-0.70ms-059669?style=for-the-badge)](https://github.com/Moaaz-i/velociforge)
 
 **VelociForge** (`vforge`) replaces slow `node_modules` disk I/O bottlenecks and multi-minute `npm ci` network installations by bundling dependency trees into a single compressed, cryptographic manifest (`.vforge`).
+
+📖 **Official Live Documentation**: [https://Moaaz-i.github.io/velociforge/](https://Moaaz-i.github.io/velociforge/)
 
 It features **0.70ms ephemeral startup**, **1.45ms zero-copy virtual symlink mounting**, **0.00ms warm lockfile verification**, **CycloneDX 1.4 & SPDX 2.3 SBOM generation**, **OSV/CVE security auditing**, and an embedded **VitePress documentation portal** (`vforge docs`).
 
