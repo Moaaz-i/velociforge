@@ -1,0 +1,14 @@
+node_modules
+.DS_Store
+*.log
+.vforge
+.vforge.json
+.vforge.tmp*
+.vforge-unpack-tmp*
+.aether
+.aether.json
+.aether.tmp*
+.aether-unpack-tmp*
+dist
+.vitepress/cache
+.vitepress/dist

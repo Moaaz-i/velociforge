@@ -1,0 +1,12 @@
+- **Getting Started**
+  - [Overview & Architecture](README.md)
+  - [Installation & Quickstart](getting-started.md)
+  - [Speed Benchmarks](benchmarks.md)
+
+- **CLI Reference**
+  - [Full CLI Commands](cli-reference.md)
+  - [Ephemeral Runner (vforge run)](ephemeral-runner.md)
+  - [Security & License Audit](security-audit.md)
+  - [Monorepo Setup Guide](monorepo-guide.md)
+  - [Docker & CI/CD Integration](docker-cicd.md)
+  - [Troubleshooting & Diagnostics](troubleshooting.md)

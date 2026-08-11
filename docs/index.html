@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VelociForge Documentation | Next-Gen Virtual Package Engine</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Official Documentation for VelociForge Engine">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  
+  <!-- Premium Fonts: Outfit & Inter & Fira Code -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Docsify Theme Base -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  
+  <style>
+    /* Light Mode Variables */
+    :root {
+      --theme-color: #0284c7;
+      --bg-main: #f8fafc;
+      --bg-sidebar: #ffffff;
+      --bg-card: #ffffff;
+      --border-color: #e2e8f0;
+      --accent-blue: #0284c7;
+      --accent-purple: #7c3aed;
+      --accent-emerald: #059669;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --code-bg: #0f172a;
+      --table-header-bg: #f1f5f9;
+    }
+
+    /* Luxury Cyberpunk Dark Mode Variables */
+    body.dark-mode {
+      --bg-main: #070a12;
+      --bg-sidebar: #0f172a;
+      --bg-card: #131c31;
+      --border-color: rgba(255, 255, 255, 0.1);
+      --accent-blue: #38bdf8;
+      --accent-purple: #c084fc;
+      --accent-emerald: #34d399;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --code-bg: #030712;
+      --table-header-bg: #1e293b;
+    }
+
+    body {
+      background-color: var(--bg-main) !important;
+      color: var(--text-main) !important;
+      font-family: 'Inter', 'Outfit', sans-serif !important;
+      font-size: 16px;
+      line-height: 1.75;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    /* Sidebar Styling */
+    .sidebar {
+      background-color: var(--bg-sidebar) !important;
+      border-right: 1px solid var(--border-color) !important;
+      color: var(--text-main) !important;
+      padding-top: 1.5rem;
+      box-shadow: 2px 0 15px rgba(0,0,0,0.03);
+    }
+
+    .sidebar .app-name {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      padding: 0 1rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Theme Toggle Switch */
+    .theme-toggle-container {
+      padding: 0 1rem 1.5rem 1rem;
+    }
+    .theme-toggle-btn {
+      width: 100%;
+      padding: 9px 14px;
+      background: var(--bg-main);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .theme-toggle-btn:hover {
+      border-color: var(--accent-blue);
+      color: var(--accent-blue);
+      transform: translateY(-1px);
+    }
+
+    .sidebar ul li a {
+      color: var(--text-muted) !important;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      border-radius: 8px;
+      padding: 6px 12px;
+    }
+
+    .sidebar ul li a:hover {
+      color: var(--accent-blue) !important;
+      background: rgba(56, 189, 248, 0.1);
+      transform: translateX(4px);
+    }
+
+    .sidebar ul li.active > a {
+      color: var(--accent-blue) !important;
+      font-weight: 700;
+      background: rgba(56, 189, 248, 0.15);
+      border-left: 3px solid var(--accent-blue);
+    }
+
+    /* Search Box */
+    .search input {
+      background-color: var(--bg-main) !important;
+      border: 1px solid var(--border-color) !important;
+      color: var(--text-main) !important;
+      border-radius: 10px !important;
+      padding: 10px 14px !important;
+      font-family: inherit;
+    }
+
+    .search input:focus {
+      border-color: var(--accent-blue) !important;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+    }
+
+    /* Content Area */
+    .markdown-section {
+      max-width: 900px !important;
+      padding-top: 1.5rem;
+    }
+
+    .markdown-section h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.5px;
+    }
+
+    .markdown-section h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--accent-blue);
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.5rem;
+    }
+
+    .markdown-section h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.3rem;
+      color: var(--accent-purple);
+      margin-top: 1.8rem;
+    }
+
+    .markdown-section p, .markdown-section ul li {
+      color: #334155;
+    }
+
+    body.dark-mode .markdown-section p, body.dark-mode .markdown-section ul li {
+      color: #cbd5e1;
+    }
+
+    .markdown-section blockquote {
+      background: rgba(2, 132, 199, 0.06);
+      border-left: 4px solid var(--accent-blue);
+      color: #0369a1;
+      padding: 1rem 1.2rem;
+      border-radius: 0 10px 10px 0;
+      margin: 1.5rem 0;
+    }
+
+    body.dark-mode .markdown-section blockquote {
+      background: rgba(56, 189, 248, 0.1);
+      color: #93c5fd;
+      border-left-color: #38bdf8;
+    }
+
+    /* Code Blocks */
+    .markdown-section pre {
+      background-color: var(--code-bg) !important;
+      border: 1px solid var(--border-color) !important;
+      border-radius: 12px !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      padding: 1.2rem !important;
+    }
+
+    .markdown-section code {
+      font-family: 'Fira Code', monospace !important;
+      font-size: 0.92rem;
+    }
+
+    .markdown-section p code {
+      background-color: rgba(56, 189, 248, 0.12) !important;
+      color: var(--accent-blue) !important;
+      padding: 3px 8px !important;
+      border-radius: 6px !important;
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+
+    /* Tables */
+    .markdown-section table {
+      border-collapse: separate;
+      border-spacing: 0;
+      width: 100%;
+      margin: 1.5rem 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-card);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    .markdown-section th {
+      background-color: var(--table-header-bg);
+      color: var(--accent-blue);
+      font-weight: 700;
+      padding: 12px 16px;
+      text-align: left;
+    }
+
+    .markdown-section td {
+      padding: 12px 16px;
+      border-top: 1px solid var(--border-color);
+      color: var(--text-main);
+    }
+
+    .markdown-section tr:hover td {
+      background-color: rgba(56, 189, 248, 0.05);
+    }
+  </style>
+</head>
+<body class="dark-mode">
+  <div id="app">Loading VelociForge Dark Documentation...</div>
+  
+  <script>
+    window.$docsify = {
+      name: '⚡ VelociForge Engine',
+      loadSidebar: true,
+      subMaxLevel: 3,
+      auto2top: true,
+      search: {
+        maxAge: 86400000,
+        paths: 'auto',
+        placeholder: '🔍 Search docs...',
+        noData: 'No results found',
+        depth: 6
+      },
+      copyCode: {
+        buttonText: 'Copy',
+        errorText: 'Error',
+        successText: 'Copied'
+      },
+      plugins: [
+        function(hook, vm) {
+          hook.doneEach(function() {
+            if (!document.querySelector('.theme-toggle-btn')) {
+              const sidebar = document.querySelector('.sidebar');
+              const container = document.createElement('div');
+              container.className = 'theme-toggle-container';
+              container.innerHTML = `<button class="theme-toggle-btn" onclick="toggleTheme()"><span id="theme-icon">🌙</span> <span id="theme-text">Dark Mode</span></button>`;
+              sidebar.insertBefore(container, sidebar.children[1]);
+            }
+          });
+        }
+      ]
+    }
+
+    function toggleTheme() {
+      const body = document.body;
+      body.classList.toggle('dark-mode');
+      const isDark = body.classList.contains('dark-mode');
+      document.getElementById('theme-icon').innerText = isDark ? '🌙' : '☀️';
+      document.getElementById('theme-text').innerText = isDark ? 'Dark Mode' : 'Light Mode';
+    }
+  </script>
+  <!-- Docsify Core JS -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
+</body>
+</html>

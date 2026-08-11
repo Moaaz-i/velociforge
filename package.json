@@ -1,0 +1,45 @@
+{
+  "name": "velociforge",
+  "version": "1.0.0",
+  "description": "Next-Generation Virtualized Package Engine & Sub-Millisecond CI Restorer for Node.js",
+  "main": "src/cli.js",
+  "bin": {
+    "vforge": "bin/velociforge.js",
+    "velociforge": "bin/velociforge.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "docs",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "start": "node bin/velociforge.js",
+    "test": "node tests/runner.test.js",
+    "docs": "vitepress dev docs --port 4000",
+    "docs:build": "vitepress build docs"
+  },
+  "keywords": [
+    "ci",
+    "node_modules",
+    "virtualization",
+    "tar",
+    "zstd",
+    "fast-install",
+    "cache",
+    "bundler",
+    "velociforge",
+    "vforge"
+  ],
+  "author": "Moaaz",
+  "license": "MIT",
+  "homepage": "https://github.com/moaaz/velociforge#readme",
+  "dependencies": {
+    "express": "^4.19.2",
+    "tar": "^6.2.0"
+  },
+  "devDependencies": {
+    "vitepress": "^1.6.4"
+  }
+}
