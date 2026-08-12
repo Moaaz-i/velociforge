@@ -87,12 +87,26 @@ class UnpackerEngine {
             };
         }
 
-        // FAST PATH 2: Extract to Global Cache Container and Symlink
+        // FAST PATH 2: Determine Extraction Target Directory
         const targetExtractDir = useSymlink ? cachedContainerPath : nodeModulesPath;
-        if (useSymlink && !fs.existsSync(cachedContainerPath)) {
-            fs.mkdirSync(cachedContainerPath, { recursive: true });
+
+        // Ensure extraction target directory exists
+        if (!fs.existsSync(targetExtractDir)) {
+            fs.mkdirSync(targetExtractDir, { recursive: true });
         }
 
+        // Clean target extraction directory if extracting directly without symlinks
+        if (!useSymlink && fs.existsSync(targetExtractDir)) {
+            try {
+                const stat = fs.lstatSync(targetExtractDir);
+                if (stat.isSymbolicLink()) {
+                    fs.unlinkSync(targetExtractDir);
+                    fs.mkdirSync(targetExtractDir, { recursive: true });
+                }
+            } catch (e) {}
+        }
+
+        // Safe extraction with strip and link cleanup
         await new Promise((resolve, reject) => {
             let readStream = fs.createReadStream(bundlePath);
 
@@ -124,6 +138,7 @@ class UnpackerEngine {
             const tarExtract = tar.x({
                 cwd: targetExtractDir,
                 preservePaths: false,
+                strip: 1, // Remove outer 'node_modules' directory wrapper to prevent recursive node_modules/node_modules nesting
             });
 
             pipelineStream.pipe(tarExtract);
@@ -133,11 +148,19 @@ class UnpackerEngine {
             readStream.on('error', reject);
         });
 
-        // Resolve exact extracted location
-        const resolvedModulesDir = fs.existsSync(cachedModulesPath) ? cachedModulesPath : targetExtractDir;
-
-        if (useSymlink && !fs.existsSync(nodeModulesPath)) {
-            fs.symlinkSync(resolvedModulesDir, nodeModulesPath, 'dir');
+        // Ensure target directory exists and mount symlink if using virtual cache mode
+        if (useSymlink) {
+            if (fs.existsSync(nodeModulesPath)) {
+                try {
+                    const stat = fs.lstatSync(nodeModulesPath);
+                    if (stat.isSymbolicLink()) {
+                        fs.unlinkSync(nodeModulesPath);
+                    } else {
+                        fs.rmSync(nodeModulesPath, { recursive: true, force: true });
+                    }
+                } catch (e) {}
+            }
+            fs.symlinkSync(cachedContainerPath, nodeModulesPath, 'dir');
         }
 
         const durationMs = Logger.timerEnd(timer);

@@ -44,6 +44,13 @@ async function runTests() {
     assert.strictEqual(unpackRes.cached, true, 'Subsequent restoration must be zero-delay cached');
     Logger.success(`Test 4 Passed: ${unpackRes.message}`);
 
+    // Test 4b: Forced double unpacking verification (Resilience against double extraction)
+    Logger.info('Test 4b: Forced Double Unpacking Resilience Test...');
+    const doubleUnpackRes = await UnpackerEngine.restore({ cwd: projectDir, force: true, useSymlink: false });
+    assert.ok(fs.existsSync(path.join(projectDir, 'node_modules', 'tar')), 'Sub-package tar must exist after double unpacking');
+    assert.ok(!fs.existsSync(path.join(projectDir, 'node_modules', 'node_modules')), 'No recursive node_modules/node_modules allowed');
+    Logger.success('Test 4b Passed: Double extraction resilience verified successfully.');
+
     // Test 5: Security audit
     Logger.info('Test 5: Security & License Audit...');
     const auditRes = SecurityEngine.audit(projectDir);
